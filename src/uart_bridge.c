@@ -326,6 +326,7 @@ static void tu_process_uart(int uart_no, struct tu_conn *tu_conn) {
         bool ok = tu_bt_send(tu_conn->tubc, mg_mk_str_n(b, len));
         if (ok) {
           LOG(LL_DEBUG, ("UART -> %d -> BT", len));
+          s_last_activity = mg_time();
         }
         free(b);
       }
@@ -677,6 +678,9 @@ bool bt_rx_cb(struct mg_str value) {
      */
     return false;
   }
+
+  LOG(LL_DEBUG, ("BT -> %d -> UART", len));
+  s_last_activity = mg_time();
 
   mbuf_append(&s_bt_buf_rx, value.p, len);
   tu_dispatch_to_uart(&s_bt_buf_rx, s_ucfg->uart_no);
