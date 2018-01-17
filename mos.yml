@@ -31,7 +31,7 @@ config_schema:
   - ["tcp.listener.ws", "o", {"title": "WebSocket configuration"}]
   - ["tcp.listener.ws.enable", "b", {"title": "Enable WebSocket"}]
   - ["tcp.client", "o", {"title": "Client"}]
-  - ["tcp.client.remote_addr", "s", "mongoose-os.com:443", {"title": "Remote address (host:port)"}]
+  - ["tcp.client.remote_addr", "s", "", {"title": "Remote address (host:port)"}]
   - ["tcp.client.tls", "o", {"title": "TLS"}]
   - ["tcp.client.tls.cert", "s", {"title": "Client cert file"}]
   - ["tcp.client.tls.ca_cert", "s", "ca.pem", {"title": "Server verification bundle"}]
