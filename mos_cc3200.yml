@@ -1,4 +1,5 @@
 config_schema:
+  - ["tcp.keepalive", "o", {"title": "Keepalive"}]
   - ["tcp.keepalive.enable", "b", true, {"title": "Enable TCP keepalive"}]
 
 sources:

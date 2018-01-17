@@ -516,7 +516,7 @@ static void tu_set_conn_tcp(struct mg_connection *nc, bool ws) {
   }
 
   nc->handler = (ws ? tu_ws_conn_handler : tu_tcp_conn_handler);
-#if CS_PLATFORM == CS_P_ESP8266
+#if CS_PLATFORM == CS_P_ESP8266 || CS_PLATFORM == CS_P_ESP32
   mg_lwip_set_keepalive_params(nc, s_tcfg->keepalive.idle,
                                s_tcfg->keepalive.interval,
                                s_tcfg->keepalive.count);

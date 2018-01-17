@@ -1,4 +1,10 @@
 config_schema:
+  # ESP (LWIP) supports fine-grained control over keepalive.
+  - ["tcp.keepalive", "o", {"title": "Keepalive"}]
+  - ["tcp.keepalive.idle", "i", 60, {"title": "Begin after idle (sec)"}]
+  - ["tcp.keepalive.count", "i", 10, {"title": "Send this many probes"}]
+  - ["tcp.keepalive.interval", "i", 6, {"title": "Send at this interval (sec)"}]
+
   - ["wifi.ap.keep_enabled", false]
 
   # ESP has various thresholds for UART FIFOs.
