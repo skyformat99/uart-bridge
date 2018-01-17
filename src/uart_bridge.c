@@ -190,7 +190,7 @@ void check_beeper(void) {
   if ((now - s_last_activity > s_mcfg->beeper.timeout_seconds) &&
       (now - last_change > 0.9)) {
     beeping_on_gpio = s_mcfg->beeper.gpio_no;
-    mgos_pwm_set(beeping_on_gpio, 250, 125); /* BEEEP! (4 KHz) */
+    mgos_pwm_set(beeping_on_gpio, 4000, 0.5); /* BEEEP! (4 KHz) */
     last_change = now;
     LOG(LL_WARN,
         ("No activity for %d seconds - BEEP!", (int) (now - s_last_activity)));
