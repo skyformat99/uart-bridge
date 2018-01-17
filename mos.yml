@@ -41,7 +41,6 @@ config_schema:
   - ["tcp.client.ws.uri", "s", "/uart-to-websocket/device/????????????", {"title": "URI to use during handshake"}]
   - ["tcp.client.ws.protocol", "s", {"title": "WS sub-protocol to send"}]
   - ["tcp.client.reconnect_interval", "i", 5, {"title": "Retry interval (s)"}]
-  - ["tcp.keepalive", "o", {"title": "Keepalive"}]
   - ["tcp.rx_buf_size", "i", 2048, {"title": "RX buffer size"}]
   - ["tcp.tx_buf_size", "i", 2048, {"title": "TX buffer size"}]
   - ["tcp.status_interval_ms", "i", 1000, {"title": "Status interval (ms)"}]
