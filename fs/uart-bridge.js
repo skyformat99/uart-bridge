@@ -1,9 +1,10 @@
 "use strict";
 
-(function() {
+let UARTBridge = (function() {
   // Configuration object. Gets set up on window load
   var cfg_current = {};
   var sys_info_current = {};
+  var loadConfigCallbacks = [];
 
   window.onload = function() {
     controlsEnableDisable(false);
@@ -118,6 +119,10 @@
             }
           }
         }
+
+        loadConfigCallbacks.forEach(function(c) {
+          c(cfg_current);
+        })
       },
     });
 
@@ -217,4 +222,33 @@
     $('.form-control').prop("disabled", !en);
     $('.button').prop("disabled", !en);
   }
+
+  return {
+    // confGet(cfg, id)
+    // Returns a config value from a config object `cfg` by its id like
+    // "wifi.ap.ssid"
+    confGet: confGet,
+
+    // confSet(cfg, id, el)
+    // Sets a config value in a config object `cfg` by its id like
+    // "wifi.ap.ssid". Value is taken from an element `el`: for text and
+    // numeric values it should be a text input, for booleans it should be a
+    // checkbox.
+    //
+    // New value should have the same type as the existing one.
+    confSet: confSet,
+
+    // confCurrent()
+    // Returns current config object
+    confCurrent: function() {
+      return cfg_current;
+    },
+
+    // addLoadConfigCallback(cb)
+    // Adds a callback which will be called every time a new config object is
+    // loaded. The callback is given the config object as a first argument.
+    addLoadConfigCallback: function(cb) {
+      loadConfigCallbacks.push(cb);
+    },
+  };
 })();
