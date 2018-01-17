@@ -62,10 +62,6 @@ config_schema:
   - ["misc.beeper.timeout_seconds", "i", {"title": "Start beeping after (s)"}]
   - ["misc.beeper.gpio_no", "i", -1, {"title": "On GPIO"}]
 
-    # uart-brdige bluetooth service will be initialized depending on bt.enable,
-    # which is a user's option, but bt.keep_enabled is on by default.
-  - ["bt.keep_enabled", true]
-
 libs:
   - origin: https://github.com/mongoose-os-libs/ca-bundle
   - origin: https://github.com/mongoose-os-libs/wifi
