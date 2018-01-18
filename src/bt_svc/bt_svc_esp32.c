@@ -17,8 +17,8 @@
 #include "mgos_event.h"
 #include "mgos_hal.h"
 #include "mgos_sys_config.h"
-#include "mgos_utils.h"
 #include "mgos_timers.h"
+#include "mgos_utils.h"
 
 #include "esp32_bt.h"
 #include "esp32_bt_gatts.h"
