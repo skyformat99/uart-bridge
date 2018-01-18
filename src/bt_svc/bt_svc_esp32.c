@@ -20,6 +20,7 @@
 #include "mgos_utils.h"
 #include "mgos_timers.h"
 
+#include "esp32_bt.h"
 #include "esp32_bt_gatts.h"
 
 static bt_tcpuart_rx_cb_t s_rx_cb;
@@ -156,7 +157,7 @@ static bool mgos_bt_tcpuart_svc_ev(struct esp32_bt_session *bs,
         /* We interpret notify and indicate bits the same. */
         tubc->notify = (p->value[0] != 0);
         tubc->mtu = bs->bc->mtu;
-        LOG(LL_DEBUG, ("%s: data notify %s", mgos_bt_addr_to_str(p->bda, buf),
+        LOG(LL_DEBUG, ("%s: data notify %s", esp32_bt_addr_to_str(p->bda, buf),
                        (tubc->notify ? "on" : "off")));
         ret = true;
       } else if (p->handle == mos_tcpuart_data_ah) {
